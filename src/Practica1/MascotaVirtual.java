@@ -10,31 +10,57 @@ public class MascotaVirtual {
     private int cantDesgaste;
     private int cantComer;
 
+    private boolean estaVivo;
+
     public MascotaVirtual(){
         this.energia = MAX_ENERGIA;
         this.dormido = false;
         this.cantDesgaste = 0;
         this.cantComer = 0;
+        this.estaVivo = true;
     }
-
-    //TODO comer():boolean
 
     public boolean comer(){
         boolean control = true;
-        if(estaVivo()){
+        if(estadoVivo()){
             cantComer++;
             if(cantComer<5){
-                energia+=30;
+                if(energia > 70){
+                    energia=100;
+                }else{
+                    energia+=30;
+                }
             }else{
-                //TODO morir?
+                System.out.println("La mascota murió de indigestion!");
+                estaVivo = false;
             }
         }else{
+            System.out.println("La mascota esta muerta!");
             control = false;
         }
         return  control;
     }
 
-    //TODO beber():boolean
+    public boolean beber(){
+        boolean control = true;
+        if(estadoVivo()){
+            cantComer++;
+            if(cantComer<5){
+                if(energia > 85){
+                    energia=100;
+                }else{
+                    energia+=15;
+                }
+            }else{
+                System.out.println("La mascota murió de indigestion!");
+                estaVivo = false;
+            }
+        }else{
+            System.out.println("La mascota esta muerta!");
+            control = false;
+        }
+        return  control;
+    }
 
     //TODO dormir():boolean
 
@@ -57,7 +83,7 @@ public class MascotaVirtual {
     //TODO obtenerHumor():entero
 
     //TODO estaVivo():boolean completar
-    boolean estaVivo(){
-        return true;
+    boolean estadoVivo(){
+        return estaVivo;
     }
 }
