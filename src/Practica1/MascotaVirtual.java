@@ -122,7 +122,23 @@ public class MascotaVirtual {
         return cantComer;
     }
 
-    //TODO obtenerHumor():entero
+    public int obtenerHumor(){
+        int humor = -1;
+        if(energia > 0 && energia <= 20){
+            humor = 1;
+        }else if(energia > 21 && energia <= 40){
+            humor = 2;
+        }
+        else if(energia > 41 && energia <= 60){
+            humor = 3;
+        }
+        else if(energia > 61 && energia <= 80){
+            humor = 4;
+        }else{
+            humor = 5;
+        }
+        return humor;
+    }
 
     public boolean estadoVivo(){
         return estaVivo;
