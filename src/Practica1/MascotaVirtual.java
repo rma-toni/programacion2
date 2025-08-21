@@ -100,11 +100,48 @@ public class MascotaVirtual {
         return control;
     }
 
-    //TODO caminar():boolean
-
-    //TODO correr():boolean
-
-    //TODO saltar():boolean
+    //TODO Logica de muerte
+    //TODO Comprobar energia
+    //TODO Logica de dormir al llegar a 4 acciones seguidas
+    public boolean caminar(){
+        boolean control = true;
+        if(!estadoVivo() || estaDormido()){
+            System.out.println("No se puede completar.");
+            control = false;
+        }else{
+            cantDesgaste++;
+            energia-=15;
+        }
+        return control;
+    }
+    //TODO Logica de muerte
+    //TODO Comprobar energia
+    //TODO Logica de dormir al llegar a 4 acciones seguidas
+    public boolean correr(){
+        boolean control = true;
+        if(!estadoVivo() || estaDormido()){
+            System.out.println("No se puede completar.");
+            control = false;
+        }else{
+            cantDesgaste++;
+            energia-=(int) (MAX_ENERGIA*0.5);
+        }
+        return control;
+    }
+    //TODO Logica de muerte
+    //TODO Comprobar energia
+    //TODO Logica de dormir al llegar a 4 acciones seguidas
+    public boolean saltar(){
+        boolean control = true;
+        if(!estadoVivo() || estaDormido()){
+            System.out.println("No se puede completar.");
+            control = false;
+        }else{
+            cantDesgaste++;
+            energia-=5;
+        }
+        return control;
+    }
 
     public int obtenerEnergia(){
         return energia;
