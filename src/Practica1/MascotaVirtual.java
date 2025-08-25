@@ -79,8 +79,10 @@ public class MascotaVirtual {
             System.out.println("La mascota esta muerta!");
             control = false;
         }else{
-            System.out.println("La mascota se fue a dormir y recuro un cuarto de su energia!");
+            System.out.println("La mascota se fue a dormir y recupero un cuarto de su energia!");
             dormido = true;
+            cantDesgaste = 0;
+            cantComer = 0;
             energia += (int) (MAX_ENERGIA * 0.25f);
         }
         return control;
@@ -100,45 +102,62 @@ public class MascotaVirtual {
         return control;
     }
 
-    //TODO Logica de muerte
-    //TODO Comprobar energia
-    //TODO Logica de dormir al llegar a 4 acciones seguidas
     public boolean caminar(){
         boolean control = true;
-        if(!estadoVivo() || estaDormido()){
+        if(!estadoVivo() || estaDormido() || energia < 15){
             System.out.println("No se puede completar.");
             control = false;
         }else{
             cantDesgaste++;
-            energia-=15;
+            if(cantDesgaste == 4){
+                System.out.println("La mascota ignoro la orden.");
+                dormir();
+            }else{
+                energia-= 15;
+                if (energia == 0){
+                    estaVivo = false;
+                }
+            }
         }
         return control;
     }
-    //TODO Logica de muerte
-    //TODO Comprobar energia
-    //TODO Logica de dormir al llegar a 4 acciones seguidas
+
     public boolean correr(){
         boolean control = true;
-        if(!estadoVivo() || estaDormido()){
+        if(!estadoVivo() || estaDormido() || energia < (MAX_ENERGIA*0.5)){
             System.out.println("No se puede completar.");
             control = false;
         }else{
             cantDesgaste++;
-            energia-=(int) (MAX_ENERGIA*0.5);
+            if(cantDesgaste == 4){
+                System.out.println("La mascota ignoro la orden.");
+                dormir();
+            }else{
+                energia-= (int)(MAX_ENERGIA*0.5);
+                if (energia == 0){
+                    estaVivo = false;
+                }
+            }
         }
         return control;
     }
-    //TODO Logica de muerte
-    //TODO Comprobar energia
-    //TODO Logica de dormir al llegar a 4 acciones seguidas
+
     public boolean saltar(){
         boolean control = true;
-        if(!estadoVivo() || estaDormido()){
+        if(!estadoVivo() || estaDormido() || energia < 5){
             System.out.println("No se puede completar.");
             control = false;
         }else{
             cantDesgaste++;
-            energia-=5;
+            if(cantDesgaste == 4){
+                System.out.println("La mascota ignoro la orden.");
+                dormir();
+            }else{
+                energia-=5;
+                if (energia == 0){
+                    estaVivo = false;
+                }
+            }
         }
         return control;
     }
@@ -155,7 +174,7 @@ public class MascotaVirtual {
         return cantDesgaste;
     }
 
-    public int obtenerCantCamer(){
+    public int obtenerCantComer(){
         return cantComer;
     }
 
