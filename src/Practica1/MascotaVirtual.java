@@ -82,7 +82,11 @@ public class MascotaVirtual {
             dormido = true;
             cantDesgaste = 0;
             cantComer = 0;
-            energia += (int) (MAX_ENERGIA * 0.25f);
+            if(energia < 75){
+                energia += (int) (MAX_ENERGIA * 0.25f);
+            }else{
+                energia = 100;
+            }
         }
         return control;
     }
@@ -115,6 +119,7 @@ public class MascotaVirtual {
                 cantComer = 0;
                 energia-= 15;
                 if (energia == MIN_ENERGIA){
+                    System.out.println("La mascota se quedo sin energia y murio.");
                     estaVivo = false;
                 }
             }
@@ -136,6 +141,7 @@ public class MascotaVirtual {
                 cantComer = 0;
                 energia-= (int)(MAX_ENERGIA*0.5);
                 if (energia == MIN_ENERGIA){
+                    System.out.println("La mascota se quedo sin energia y murio.");
                     estaVivo = false;
                 }
             }
@@ -157,6 +163,7 @@ public class MascotaVirtual {
                 energia-=5;
                 cantComer = 0;
                 if (energia == MIN_ENERGIA){
+                    System.out.println("La mascota se quedo sin energia y murio.");
                     estaVivo = false;
                 }
             }
