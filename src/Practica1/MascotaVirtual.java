@@ -22,7 +22,7 @@ public class MascotaVirtual {
 
     public boolean comer(){
         boolean control = true;
-        if(estadoVivo() && !estaDormido()){ //TODO esto se puede simplicar, IDEM en beber()
+        if(!estaDormido()){ //TODO esto se puede simplicar, IDEM en beber()
             cantComer++;
             if(cantComer<5){
                 if(energia > 70){
@@ -36,10 +36,7 @@ public class MascotaVirtual {
                 System.out.println("La mascota murió de indigestion!");
                 estaVivo = false;
             }
-        }else if(!estadoVivo()){
-            System.out.println("La mascota esta muerta!");
-            control = false;
-        } else if(estaDormido()){
+        } else {
             System.out.println("La mascota esta dormida!");
             control = false;
         }
@@ -48,7 +45,7 @@ public class MascotaVirtual {
 
     public boolean beber(){
         boolean control = true;
-        if(estadoVivo() && !estaDormido()){
+        if(!estaDormido()){
             cantComer++;
             if(cantComer<5){
                 if(energia > 85){
@@ -62,10 +59,7 @@ public class MascotaVirtual {
                 System.out.println("La mascota murió de indigestion!");
                 estaVivo = false;
             }
-        }else if(!estadoVivo()){
-            System.out.println("La mascota esta muerta!");
-            control = false;
-        } else if(estaDormido()){
+        } else {
             System.out.println("La mascota esta dormida!");
             control = false;
         }
@@ -96,8 +90,6 @@ public class MascotaVirtual {
         if(!estaDormido()){
             System.out.println("La mascota no esta dormida!");
             control = false;
-        }else if(!estadoVivo()){
-            System.out.println("La mascota esta muerta!");
         }else{
             dormido = false;
             System.out.println("La mascota desperto!");
