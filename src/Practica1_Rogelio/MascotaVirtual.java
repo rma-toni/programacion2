@@ -1,10 +1,11 @@
-package Practica1;
+package Practica1_Rogelio;
 
 public class MascotaVirtual {
 
     public static final short MAX_ENERGIA = 100;
     public static final short MIN_ENERGIA = 0;
 
+    private String nombre;
     private int energia;
     private boolean dormido;
     private int cantDesgaste;
@@ -12,7 +13,8 @@ public class MascotaVirtual {
 
     private boolean estaVivo;
 
-    public MascotaVirtual(){
+    public MascotaVirtual(String nombre){
+        this.nombre = nombre;
         this.energia = MAX_ENERGIA;
         this.dormido = false;
         this.cantDesgaste = 0;
@@ -24,15 +26,14 @@ public class MascotaVirtual {
         boolean control = true;
         if(!estaDormido()){ //TODO esto se puede simplicar, IDEM en beber()
             cantComer++;
-            if(cantComer<5){
-                if(energia > 70){
-                    energia=100;
-                }else{
-                    energia+=30;
-                }
-                System.out.println("La mascota comió y recupero 30 puntos de energia");
-                cantDesgaste = 0;
+            if(energia > 70){
+                energia=100;
             }else{
+                energia+=30;
+            }
+            System.out.println("La mascota comió y recupero 30 puntos de energia");
+            cantDesgaste = 0;
+            if(cantComer == 5){
                 System.out.println("La mascota murió de indigestion!");
                 estaVivo = false;
             }

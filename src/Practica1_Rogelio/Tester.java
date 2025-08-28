@@ -1,4 +1,4 @@
-package Practica1;
+package Practica1_Rogelio;
 
 //TODO Logica de objeto
 //TODO Logica de menu para interactuar con el objeto
@@ -8,7 +8,9 @@ import java.util.Scanner;
 public class Tester {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        MascotaVirtual mascota1 = new MascotaVirtual();
+        System.out.print("Ingrese el nombre de su mascota virtual: ");
+        String nombre = scan.nextLine();
+        MascotaVirtual mascota1 = new MascotaVirtual("2");
         while (mascota1.estadoVivo()){
             System.out.println("----------------- MASCOTA VIRTUAL -----------------");
             System.out.println(mascota1.toString());
