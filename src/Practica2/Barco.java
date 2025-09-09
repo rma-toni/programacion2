@@ -18,10 +18,17 @@ public class Barco {
 
     public float getAlquiler(LocalDate diaInicial, LocalDate diaFinal){
         int dias = (int) (ChronoUnit.DAYS.between(diaInicial,diaFinal)+1);
-        return dias * getModulo() * VALOR;
+        return dias * this.getModulo() * VALOR;
     }
 
     public float getModulo(){
         return eslora*10;
+    }
+
+    @Override
+    public String toString() {
+        return ", matricula='" + matricula + '\'' +
+                ", eslora=" + eslora +
+                ", anioFabricacion=" + anioFabricacion;
     }
 }
