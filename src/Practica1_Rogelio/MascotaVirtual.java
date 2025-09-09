@@ -202,6 +202,10 @@ public class MascotaVirtual {
         return estaVivo;
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+
     @Override
     public String toString() {
         return  "Energia = " + energia +
