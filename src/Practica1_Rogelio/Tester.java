@@ -10,9 +10,10 @@ public class Tester {
         Scanner scan = new Scanner(System.in);
         System.out.print("Ingrese el nombre de su mascota virtual: ");
         String nombre = scan.nextLine();
-        MascotaVirtual mascota1 = new MascotaVirtual("2");
+        MascotaVirtual mascota1 = new MascotaVirtual(nombre);
         while (mascota1.estadoVivo()){
-            System.out.println("----------------- MASCOTA VIRTUAL -----------------");
+            System.out.println("----------------- MASCOTA VIRTUAL: " + mascota1.getNombre() + " -----------------");
+            System.out.println("Humor: "+mascota1.obtenerHumor());
             System.out.println(mascota1.toString());
             System.out.println("1 - Comer");
             System.out.println("2 - Beber");

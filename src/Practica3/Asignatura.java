@@ -14,6 +14,16 @@ public class Asignatura {
         this.horas = horas;
         alumnosInscriptos = new ArrayList<>();
     }
+
+    public int alumnosInscriptos(){
+        return alumnosInscriptos.size();
+    }
+
+    @Override
+    public String toString() {
+
+        return super.toString();
+    }
 }
 
 
