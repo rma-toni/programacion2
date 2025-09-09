@@ -15,7 +15,7 @@ public class Helper {
 
 
     //region Integer Helpers
-    private static Integer getInteger(String inputMessage) {
+    public static Integer getInteger(String inputMessage) {
         Integer integerValue = 0;
         while (true) {
             try {
