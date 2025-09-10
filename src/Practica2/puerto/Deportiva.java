@@ -1,4 +1,4 @@
-package Practica2;
+package Practica2.puerto;
 
 public class Deportiva extends Barco{
     public Deportiva(String matricula, int eslora, int anioFabricacion) {

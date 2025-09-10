@@ -1,4 +1,4 @@
-package Practica2;
+package Practica2.puerto;
 
 public class Velero extends Barco{
     public Velero(String matricula, int eslora, int anioFabricacion) {

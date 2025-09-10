@@ -1,4 +1,4 @@
-package Practica2;
+package Practica2.puerto;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
