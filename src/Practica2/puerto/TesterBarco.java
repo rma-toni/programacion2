@@ -1,4 +1,5 @@
-package Practica2;
+package Practica2.puerto;
 
 public class TesterBarco {
+    
 }
