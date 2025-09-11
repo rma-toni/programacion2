@@ -37,9 +37,9 @@ public class Tester {
             }
 
             if(mago.getVida() == 0){
-                System.out.println("El guerrero gano!");
+                System.out.println("El guerrero gano!\n\n");
             }else{
-                System.out.println("El mago gano!");
+                System.out.println("El mago gano!\n\n");
             }
         }
     }

@@ -17,7 +17,7 @@ public class Barco {
     }
 
     public float getAlquiler(LocalDate diaInicial, LocalDate diaFinal){
-        int dias = (int) (ChronoUnit.DAYS.between(diaInicial,diaFinal)+1);
+        int dias = (int) (ChronoUnit.DAYS.between(diaInicial,diaFinal));
         return dias * this.getModulo() * VALOR;
     }
 
