@@ -29,6 +29,19 @@ public class Helper {
     }
     //endregion
 
+    public static Character getCharacter(String inputMessage) {
+        Character characterValue = null;
+        while (true) {
+            try {
+                System.out.print(inputMessage);
+                characterValue = scanner.nextLine().charAt(0);
+                return characterValue;
+            } catch (Exception exception) {
+                System.out.println("No es un caracter valido.");
+            }
+        }
+    }
+
     //region String Helpers - Toni:)
     public static String getString(String inputMessage){
         System.out.print(inputMessage);
