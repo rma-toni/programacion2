@@ -7,13 +7,15 @@ public class Usuario implements Serializable {
 
     private String nombre;
     private String apellido;
-    private String dni;
+    private int dni;
+    private String usuario;
 
 
-    public Usuario(String nombre, String apellido, String dni, String usario) {
+    public Usuario(String nombre, String apellido, int dni, String usuario) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.usuario = usuario;
     }
 
     //getters y Setters
@@ -33,11 +35,20 @@ public class Usuario implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
     }
 }
