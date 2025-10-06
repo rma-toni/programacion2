@@ -9,12 +9,14 @@ public class GestorTurnos implements Serializable {
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
     private ArrayList<Administrativo> administrativos;
+    private ArrayList<Turno> turnos;
 
     public GestorTurnos(String nombre){
         this.nombre = nombre;
         this.pacientes = new ArrayList<>();
         this.medicos = new ArrayList<>();
         this.administrativos = new ArrayList<>();
+        this.turnos = new ArrayList<>();
     };
 
 
