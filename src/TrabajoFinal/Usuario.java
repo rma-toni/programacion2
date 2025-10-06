@@ -3,7 +3,7 @@ package TrabajoFinal;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    private static final long serialversion1 = 1l;
+    //private static final long serialversion1 = 1l;
 
     private String nombre;
     private String apellido;
