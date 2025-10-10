@@ -1,5 +1,9 @@
 package TrabajoFinal;
 
+import TrabajoFinal.Usuarios.Administrativo;
+import TrabajoFinal.Usuarios.Medico;
+import TrabajoFinal.Usuarios.Paciente;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

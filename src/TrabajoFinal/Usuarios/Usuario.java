@@ -1,4 +1,4 @@
-package TrabajoFinal;
+package TrabajoFinal.Usuarios;
 
 import java.io.Serializable;
 

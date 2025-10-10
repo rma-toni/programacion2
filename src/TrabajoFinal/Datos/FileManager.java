@@ -1,4 +1,4 @@
-package TrabajoFinal;
+package TrabajoFinal.Datos;
 
 import java.io.*; //Solo necesitamos ObjectInputStream y FileInputStream
 

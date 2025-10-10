@@ -1,5 +1,8 @@
 package TrabajoFinal;
 
+import TrabajoFinal.Datos.FileManager;
+import TrabajoFinal.Datos.Helper;
+
 import java.io.File;
 
 public class Main {
