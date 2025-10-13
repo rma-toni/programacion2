@@ -47,13 +47,11 @@ public class Main {
 
         //region Main Panel
         JPanel mainPanel = new JPanel();
-        mainPanel.setBackground(new Color(236, 240, 241)); // gris claro
         mainPanel.setLayout(new GridLayout(1, 3, 10, 10));
         //endregion
 
         //region Panel Pacientes
         JPanel patientPanel = new JPanel();
-        patientPanel.setBackground(new Color(171, 171, 171));
         JPanel patientTitlePanel = new JPanel();
         patientTitlePanel.setBackground(new Color(255, 198, 135)); // color NARANJA (RGB)
         patientTitlePanel.setPreferredSize(new Dimension(width, 60)); // altura del panel
@@ -63,16 +61,23 @@ public class Main {
         titlePatient.setForeground(Color.BLACK); // color del texto
         patientTitlePanel.setLayout(new BorderLayout());
         patientTitlePanel.add(titlePatient, BorderLayout.CENTER);
-
         patientPanel.add(patientTitlePanel);
-        patientPanel.add(new JButton("Botón 1"));
-        patientPanel.add(new JButton("Botón 2"));
-        patientPanel.add(new JButton("Botón 3"));
+
+
+        JPanel patientButtons = new JPanel();
+        patientButtons.setLayout(new BoxLayout(patientButtons, BoxLayout.Y_AXIS)); // apilado vertical
+        JButton verPacientesBtb = new JButton("VER PACIENTES");
+        patientButtons.add(verPacientesBtb);
+        patientButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
+        patientButtons.add(new JButton("CREAR PACIENTE"));
+        patientButtons.add(Box.createVerticalStrut(10));
+        patientButtons.add(new JButton("ELIMINAR PACIENTE"));
+        patientButtons.add(Box.createVerticalStrut(10));
+        patientPanel.add(patientButtons);
         mainPanel.add(patientPanel);
         //endregion
         //region Panel Medicos
         JPanel doctorPanel = new JPanel();
-        doctorPanel.setBackground(new Color(171, 171, 171));
         JPanel doctorTitlePanel = new JPanel();
         doctorTitlePanel.setBackground(new Color(255, 198, 135)); // color NARANJA (RGB)
         doctorTitlePanel.setPreferredSize(new Dimension(width, 60)); // altura del panel
@@ -92,13 +97,12 @@ public class Main {
         //endregion
         //region Panel Administrativos
         JPanel admPanel = new JPanel();
-        admPanel.setBackground(new Color(171, 171, 171));
         JPanel admTitlePanel = new JPanel();
         admTitlePanel.setBackground(new Color(255, 198, 135)); // color NARANJA (RGB)
         admTitlePanel.setPreferredSize(new Dimension(width, 60)); // altura del panel
 
 
-        JLabel titleAdm = new JLabel("MEDICOS", JLabel.CENTER);
+        JLabel titleAdm = new JLabel("ADMINISTRATIVOS", JLabel.CENTER);
         titleAdm.setFont(new Font("Arial", Font.BOLD, 24));
         titleAdm.setForeground(Color.BLACK); // color del texto
         admTitlePanel.setLayout(new BorderLayout());
