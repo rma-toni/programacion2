@@ -74,6 +74,7 @@ public class Main {
         Dimension d = new Dimension(200, 40);
 
 
+        doctorButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
         JButton verPacientesBtn = new JButton("VER ADMINISTRATIVOS");
         verPacientesBtn.setPreferredSize(d);
         verPacientesBtn.setMinimumSize(d);
@@ -121,7 +122,7 @@ public class Main {
         patientButtons.setLayout(new BoxLayout(patientButtons, BoxLayout.Y_AXIS)); // apilado vertical
         Dimension d = new Dimension(200, 40);
 
-
+        patientButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
         JButton verPacientesBtn = new JButton("VER PACIENTES");
         verPacientesBtn.setPreferredSize(d);
         verPacientesBtn.setMinimumSize(d);
@@ -185,6 +186,7 @@ public class Main {
         Dimension d = new Dimension(200, 40);
 
 
+        doctorButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
         JButton verPacientesBtn = new JButton("VER MEDICOS");
         verPacientesBtn.setPreferredSize(d);
         verPacientesBtn.setMinimumSize(d);
