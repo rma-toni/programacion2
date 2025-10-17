@@ -1,5 +1,6 @@
 package TrabajoFinal.Datos;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Helper {
@@ -17,6 +18,23 @@ public class Helper {
             try {
                 System.out.print(inputMessage);
                 integerValue = Integer.parseInt(scanner.nextLine());
+                return integerValue;
+            } catch (Exception exception) {
+                System.out.println("No es entero.");
+            }
+        }
+    }
+
+    public static Integer getIntegerJInput(String inputMessage) {
+        Integer integerValue = 0;
+        while (true) {
+            try {
+                System.out.print(inputMessage);
+                String intString = JOptionPane.showInputDialog(inputMessage);
+                if (intString == null) {
+                    return null; // Termina la función aquí
+                }
+                integerValue = Integer.parseInt(intString);
                 return integerValue;
             } catch (Exception exception) {
                 System.out.println("No es entero.");

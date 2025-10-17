@@ -9,7 +9,7 @@ public class Medico extends Usuario implements Serializable {
     private String matricula;
 
     // contructor
-    public Medico(String nombre, String apellido, String dni, String usario, String especialidad, String matricula) {
+    public Medico(String nombre, String apellido, int dni, String usario, String especialidad, String matricula) {
         super(nombre, apellido, dni, usario);
         this.especialidad = especialidad;
         this.matricula = matricula;

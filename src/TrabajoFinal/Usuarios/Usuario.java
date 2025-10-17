@@ -7,11 +7,11 @@ public class Usuario implements Serializable {
 
     private String nombre;
     private String apellido;
-    private String dni;
+    private int dni;
     private String usuario;
 
 
-    public Usuario(String nombre, String apellido, String dni, String usuario) {
+    public Usuario(String nombre, String apellido, int dni, String usuario) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -31,15 +31,19 @@ public class Usuario implements Serializable {
         return apellido;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 

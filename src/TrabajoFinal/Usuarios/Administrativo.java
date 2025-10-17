@@ -6,7 +6,7 @@ public class Administrativo extends Usuario  implements Serializable {
     private String sector;
 
     //Contructor
-    public Administrativo(String nombre, String apellido, String dni, String usario, String sector) {
+    public Administrativo(String nombre, String apellido, int dni, String usario, String sector) {
         super(nombre, apellido, dni, usario);
         this.sector = sector;
     }

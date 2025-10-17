@@ -7,8 +7,8 @@ public class Paciente extends Usuario implements Serializable  {
     private String obraSocial;
 
     // constructor
-    public Paciente(String nombre, String apellido, String dni, String usario, String obraSocial) {
-        super(nombre, apellido, dni, usario);
+    public Paciente(String nombre, String apellido, int dni, String usuario, String obraSocial) {
+        super(nombre, apellido, dni, usuario);
         this.obraSocial = obraSocial;
     }
     // getter y setter
@@ -21,9 +21,7 @@ public class Paciente extends Usuario implements Serializable  {
     }
     @Override
     public String toString() {
-        return "Paciente [obraSocial=" + obraSocial + ", getObraSocial()=" + getObraSocial() + ", getNombre()="
-                + getNombre() + ", getApellido()=" + getApellido() + ", getDni()=" + getDni() + ", toString()="
-                + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+        return "[Nombre:"+getNombre()+", Apellido: "+getApellido()+", DNI: "+ getDni()+", usuario: " +getUsuario()+", Obra Social: "+getObraSocial()+ "]";
     }
 
 }

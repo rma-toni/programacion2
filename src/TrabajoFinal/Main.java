@@ -1,7 +1,5 @@
 package TrabajoFinal;
 
-//TODO Renombrar botones en admPanel, doctorPanel y patientPanel
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,7 +19,7 @@ public class Main {
         mainUI(centroSalud);
     }
 
-    public static void mainUI(GestorTurnos centroSalud){
+    public static void mainUI(GestorTurnos gestorTurnos){
 
         //region CREAR VENTANA
         JFrame window = new JFrame("Gestor de Turnos"); // título de la ventana
@@ -36,7 +34,7 @@ public class Main {
         //endregion
 
         //region Panel Pacientes
-        mainPanel.add(patientPanel());
+        mainPanel.add(patientPanel(gestorTurnos));
         //endregion
 
         //region Panel Medicos
@@ -48,7 +46,7 @@ public class Main {
         //endregion
 
         // Agregar los paneles al frame
-        window.add(titlePanel(centroSalud), BorderLayout.NORTH);
+        window.add(titlePanel(gestorTurnos), BorderLayout.NORTH);
         window.add(mainPanel, BorderLayout.CENTER);
 
         window.setVisible(true); // mostrar la ventana
@@ -103,7 +101,7 @@ public class Main {
         return panel;
     }
 
-    public static JPanel patientPanel(){
+    public static JPanel patientPanel(GestorTurnos gestorTurnos){
         JPanel panel = new JPanel();
 
         JPanel patientTitlePanel = new JPanel();
@@ -127,6 +125,7 @@ public class Main {
         verPacientesBtn.setPreferredSize(d);
         verPacientesBtn.setMinimumSize(d);
         verPacientesBtn.setMaximumSize(d);
+        verPacientesBtn.addActionListener(event -> gestorTurnos.mostrarPacientes());
         patientButtons.add(verPacientesBtn);
         patientButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
 
@@ -135,6 +134,7 @@ public class Main {
         crearPacienteBtn.setPreferredSize(d);
         crearPacienteBtn.setMinimumSize(d);
         crearPacienteBtn.setMaximumSize(d);
+        crearPacienteBtn.addActionListener(event -> gestorTurnos.crearPaciente());//TODO
         patientButtons.add(crearPacienteBtn);
         patientButtons.add(Box.createVerticalStrut(10));
 
@@ -227,4 +227,5 @@ public class Main {
         titlePanel.add(title, BorderLayout.CENTER);
         return titlePanel;
     }
+
 }

@@ -1,11 +1,14 @@
 package TrabajoFinal;
 
-import Practica3.Helper;
+//todo salto de linea en mostrar pacientes
+
+import TrabajoFinal.Datos.Helper;
 import TrabajoFinal.Datos.FileManager;
 import TrabajoFinal.Usuarios.Administrativo;
 import TrabajoFinal.Usuarios.Medico;
 import TrabajoFinal.Usuarios.Paciente;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ public class GestorTurnos implements Serializable {
     private ArrayList<Medico> medicos;
     private ArrayList<Administrativo> administrativos;
     private ArrayList<Turno> turnos;
+
+    private static final long serialVersionUID = 1L;
 
     private  File archivo;
 
@@ -52,6 +57,49 @@ public class GestorTurnos implements Serializable {
         }
 
 
+    }
+
+    public void crearPaciente(){
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del paciente: ");
+        if (nombre == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String apellido = JOptionPane.showInputDialog("Ingrese el apellido del paciente: ");
+        if (apellido == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        Integer dni = Helper.getIntegerJInput("Ingrese el dni: ");
+        if (dni == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String usuario = JOptionPane.showInputDialog("Ingrese el usuario del paciente: ");
+        if (usuario == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String obraSocial = JOptionPane.showInputDialog("Ingrese la obra social del paciente: ");
+        if (obraSocial == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        pacientes.add(new Paciente(nombre, apellido, dni, usuario, obraSocial));
+        FileManager.saveData(this, this.archivo.getName());
+    }
+
+    public void mostrarPacientes(){
+        if (pacientes.size() == 0){
+            JOptionPane.showMessageDialog(null ,"NO HAY PACIENTES");
+        }else{
+            JOptionPane.showMessageDialog(null ,pacientes.toString());
+        }
     }
 
     //region GET AND SET
