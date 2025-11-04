@@ -281,6 +281,45 @@ public class GestorTurnos implements Serializable {
         }
     }
 
+    public void debugData(){
+            if (JOptionPane.showConfirmDialog(null, "ADD DEBUG DATA?") == 0) {
+                pacientes.add(new Paciente("Jorge", "Ramírez", 40123654, "jramirez", "Swiss Medical"));
+                pacientes.add(new Paciente("María", "Gómez", 45891234, "mgomez", "OSDE"));
+                pacientes.add(new Paciente("Lucía", "Fernández", 37984512, "lfernandez", "IOMA"));
+                pacientes.add(new Paciente("Carlos", "Pérez", 42135789, "cperez", "Galeno"));
+                pacientes.add(new Paciente("Ana", "López", 43876590, "alopez", "Medifé"));
+                pacientes.add(new Paciente("Pedro", "Martínez", 39876123, "pmartinez", "PAMI"));
+                pacientes.add(new Paciente("Sofía", "Rivas", 40987456, "srivas", "OSDE"));
+                pacientes.add(new Paciente("Matías", "Suárez", 42785649, "msuarez", "Swiss Medical"));
+                pacientes.add(new Paciente("Camila", "Ortiz", 45678123, "cortiz", "IOMA"));
+                pacientes.add(new Paciente("Diego", "Herrera", 41234567, "dherrera", "Galeno"));
+
+                medicos.add(new Medico("Laura", "Benítez", 32567890, "lbenitez", "Cardiología", 12345));
+                medicos.add(new Medico("Martín", "Castro", 30123456, "mcastro", "Pediatría", 23456));
+                medicos.add(new Medico("Luciano", "Díaz", 29876543, "ldiaz", "Clínica Médica", 34567));
+                medicos.add(new Medico("Valeria", "Romero", 31234987, "vromero", "Dermatología", 45678));
+                medicos.add(new Medico("Fernando", "Sánchez", 28765432, "fsanchez", "Traumatología", 56789));
+                medicos.add(new Medico("Julieta", "Mendoza", 33456789, "jmendoza", "Ginecología", 67890));
+                medicos.add(new Medico("Esteban", "López", 29543218, "elopez", "Oftalmología", 78901));
+                medicos.add(new Medico("Carolina", "Ruiz", 31876543, "cruiz", "Neurología", 89012));
+                medicos.add(new Medico("Diego", "Morales", 30567891, "dmorales", "Psiquiatría", 90123));
+                medicos.add(new Medico("Paula", "Herrera", 32987654, "pherrera", "Endocrinología", 11223));
+
+                administrativos.add(new Administrativo("Gabriela", "Torres", 31567890, "gtorres", "Recepción"));
+                administrativos.add(new Administrativo("Ricardo", "Luna", 29876543, "rluna", "Facturación"));
+                administrativos.add(new Administrativo("Daniela", "Moreno", 32789456, "dmoreno", "Admisión"));
+                administrativos.add(new Administrativo("Federico", "Paz", 31234567, "fpaz", "Recursos Humanos"));
+                administrativos.add(new Administrativo("Patricia", "Vega", 30567891, "pvega", "Archivo Clínico"));
+                administrativos.add(new Administrativo("Rodrigo", "Núñez", 32987654, "rnunez", "Sistemas"));
+                administrativos.add(new Administrativo("Marcela", "Rojas", 30123987, "mrojas", "Contabilidad"));
+                administrativos.add(new Administrativo("Lucía", "Cabrera", 33456789, "lcabrera", "Atención al Público"));
+                administrativos.add(new Administrativo("Javier", "Ortiz", 28976543, "jortiz", "Compras"));
+                administrativos.add(new Administrativo("Sabrina", "Flores", 32234567, "sflores", "Mesa de Entradas"));
+
+                FileManager.saveData(this, archivo.getName());
+            }
+    }
+
     //region GET AND SET
     public void setNombre(String nombre) {
         this.nombre = nombre;

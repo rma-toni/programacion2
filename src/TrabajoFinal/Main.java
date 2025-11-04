@@ -3,8 +3,9 @@ package TrabajoFinal;
 import javax.swing.*;
 import java.awt.*;
 
-public class Main {
+//TODO ToString de medicos y adm
 
+public class Main {
 
     // Obtener el tamaño de la pantalla
     static Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
@@ -14,9 +15,10 @@ public class Main {
     static int width = (int) (widthScreen * 0.7);
     static int height = (int) (heigthScreen * 0.7);
 
-    public static void main(String[] args) {
-        GestorTurnos centroSalud = new GestorTurnos();
-        mainUI(centroSalud);
+    static void main(String[] args) {
+        GestorTurnos gestorTurnos = new GestorTurnos();
+        gestorTurnos.debugData();
+        mainUI(gestorTurnos);
     }
 
     public static void mainUI(GestorTurnos gestorTurnos){
@@ -73,27 +75,30 @@ public class Main {
 
 
         doctorButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
-        JButton verPacientesBtn = new JButton("VER ADMINISTRATIVOS");
-        verPacientesBtn.setPreferredSize(d);
-        verPacientesBtn.setMinimumSize(d);
-        verPacientesBtn.setMaximumSize(d);
-        doctorButtons.add(verPacientesBtn);
+        JButton verAdmBtn = new JButton("VER ADMINISTRATIVOS");
+        verAdmBtn.setPreferredSize(d);
+        verAdmBtn.setMinimumSize(d);
+        verAdmBtn.setMaximumSize(d);
+        verAdmBtn.addActionListener(event -> gestorTurnos.mostrarAdministrativos());
+        doctorButtons.add(verAdmBtn);
         doctorButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
 
 
-        JButton crearPacienteBtn = new JButton("CREAR ADMINISTRATIVO");
-        crearPacienteBtn.setPreferredSize(d);
-        crearPacienteBtn.setMinimumSize(d);
-        crearPacienteBtn.setMaximumSize(d);
-        doctorButtons.add(crearPacienteBtn);
+        JButton crearAdmBtn = new JButton("CREAR ADMINISTRATIVO");
+        crearAdmBtn.setPreferredSize(d);
+        crearAdmBtn.setMinimumSize(d);
+        crearAdmBtn.setMaximumSize(d);
+        crearAdmBtn.addActionListener(event -> gestorTurnos.crearAdministrativo());
+        doctorButtons.add(crearAdmBtn);
         doctorButtons.add(Box.createVerticalStrut(10));
 
 
-        JButton eliminarPacienteBtn = new JButton("BORRAR ADMINISTRATIVO");
-        eliminarPacienteBtn.setPreferredSize(d);
-        eliminarPacienteBtn.setMinimumSize(d);
-        eliminarPacienteBtn.setMaximumSize(d);
-        doctorButtons.add(eliminarPacienteBtn);
+        JButton eliminarAdmBtn = new JButton("BORRAR ADMINISTRATIVO");
+        eliminarAdmBtn.setPreferredSize(d);
+        eliminarAdmBtn.setMinimumSize(d);
+        eliminarAdmBtn.setMaximumSize(d);
+        eliminarAdmBtn.addActionListener(event -> gestorTurnos.eliminarAdministrativo());
+        doctorButtons.add(eliminarAdmBtn);
         doctorButtons.add(Box.createVerticalStrut(10));
 
         panel.add(doctorButtons);
@@ -186,29 +191,31 @@ public class Main {
         doctorButtons.setLayout(new BoxLayout(doctorButtons, BoxLayout.Y_AXIS)); // apilado vertical
         Dimension d = new Dimension(200, 40);
 
-
         doctorButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
-        JButton verPacientesBtn = new JButton("VER MEDICOS");
-        verPacientesBtn.setPreferredSize(d);
-        verPacientesBtn.setMinimumSize(d);
-        verPacientesBtn.setMaximumSize(d);
-        doctorButtons.add(verPacientesBtn);
+        JButton verMedicosBtn = new JButton("VER MEDICOS");
+        verMedicosBtn.setPreferredSize(d);
+        verMedicosBtn.setMinimumSize(d);
+        verMedicosBtn.setMaximumSize(d);
+        verMedicosBtn.addActionListener(event -> gestorTurnos.mostrarMedicos());
+        doctorButtons.add(verMedicosBtn);
         doctorButtons.add(Box.createVerticalStrut(10)); // 10px de espacio vertical
 
 
-        JButton crearPacienteBtn = new JButton("CREAR MEDICO");
-        crearPacienteBtn.setPreferredSize(d);
-        crearPacienteBtn.setMinimumSize(d);
-        crearPacienteBtn.setMaximumSize(d);
-        doctorButtons.add(crearPacienteBtn);
+        JButton crearMedicoBtn = new JButton("CREAR MEDICO");
+        crearMedicoBtn.setPreferredSize(d);
+        crearMedicoBtn.setMinimumSize(d);
+        crearMedicoBtn.setMaximumSize(d);
+        crearMedicoBtn.addActionListener(event -> gestorTurnos.crearMedico());
+        doctorButtons.add(crearMedicoBtn);
         doctorButtons.add(Box.createVerticalStrut(10));
 
 
-        JButton eliminarPacienteBtn = new JButton("BORRAR MEDICO");
-        eliminarPacienteBtn.setPreferredSize(d);
-        eliminarPacienteBtn.setMinimumSize(d);
-        eliminarPacienteBtn.setMaximumSize(d);
-        doctorButtons.add(eliminarPacienteBtn);
+        JButton eliminarMedicoBtn = new JButton("BORRAR MEDICO");
+        eliminarMedicoBtn.setPreferredSize(d);
+        eliminarMedicoBtn.setMinimumSize(d);
+        eliminarMedicoBtn.setMaximumSize(d);
+        eliminarMedicoBtn.addActionListener(event -> gestorTurnos.eliminarMedico());
+        doctorButtons.add(eliminarMedicoBtn);
         doctorButtons.add(Box.createVerticalStrut(10));
 
         panel.add(doctorButtons);
