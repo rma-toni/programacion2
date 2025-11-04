@@ -98,8 +98,61 @@ public class GestorTurnos implements Serializable {
         if (pacientes.size() == 0){
             JOptionPane.showMessageDialog(null ,"NO HAY PACIENTES");
         }else{
-            JOptionPane.showMessageDialog(null ,pacientes.toString());
+            StringBuilder message = new StringBuilder();
+            for (Paciente paciente : pacientes){
+                message.append(paciente.toString()+"\n");
+            }
+            JOptionPane.showMessageDialog(null ,message);
         }
+    }
+
+    public void eliminarPaciente(){
+        if (pacientes.size() == 0){
+            JOptionPane.showMessageDialog(null,"NO HAY PACIENTES!");
+        }else{
+            String usuarioPaciente = JOptionPane.showInputDialog("Ingrese el usuario del paciente que desea eliminar: ");
+            Paciente pacienteEliminar = null;
+            for (Paciente paciente : pacientes){
+                if (paciente.getUsuario().equals(usuarioPaciente)){
+                    pacienteEliminar = paciente;
+                }
+            }
+            if (pacienteEliminar == null){
+                JOptionPane.showMessageDialog(null, "PACIENTE NO ENCONTRADO!");
+            }else{
+                if (JOptionPane.showConfirmDialog(null, pacienteEliminar.toString()+". ELIMINAR?") == 0){
+                    pacientes.remove(pacienteEliminar);
+                    JOptionPane.showMessageDialog(null,"Paciente eliminado!");
+                    FileManager.saveData(this, archivo.getName());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Operacion cancelada.");
+                }
+            }
+        }
+    }
+
+    public void crearMedico(){
+
+    }
+
+    public void mostrarMedicos(){
+
+    }
+
+    public void eliminarMedico(){
+
+    }
+
+    public void crearAdministrativo(){
+
+    }
+
+    public void mostrarAdministrativos(){
+
+    }
+
+    public void eliminarAdministrativo(){
+
     }
 
     //region GET AND SET

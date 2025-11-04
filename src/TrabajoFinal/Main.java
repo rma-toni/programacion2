@@ -143,6 +143,7 @@ public class Main {
         eliminarPacienteBtn.setPreferredSize(d);
         eliminarPacienteBtn.setMinimumSize(d);
         eliminarPacienteBtn.setMaximumSize(d);
+        eliminarPacienteBtn.addActionListener(event -> gestorTurnos.eliminarPaciente());
         patientButtons.add(eliminarPacienteBtn);
         patientButtons.add(Box.createVerticalStrut(10));
 

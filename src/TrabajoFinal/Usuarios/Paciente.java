@@ -2,7 +2,7 @@ package TrabajoFinal.Usuarios;
 
 import java.io.Serializable;
 
-public class Paciente extends Usuario implements Serializable  {
+public class Paciente extends Usuario{
 
     private String obraSocial;
 
