@@ -38,11 +38,11 @@ public class Main {
         //endregion
 
         //region Panel Medicos
-        mainPanel.add(doctorPanel());
+        mainPanel.add(doctorPanel(gestorTurnos));
         //endregion
 
         //region Panel Administrativos
-        mainPanel.add(adminPanel());
+        mainPanel.add(adminPanel(gestorTurnos));
         //endregion
 
         // Agregar los paneles al frame
@@ -52,7 +52,7 @@ public class Main {
         window.setVisible(true); // mostrar la ventana
     }
 
-    public static JPanel adminPanel(){
+    public static JPanel adminPanel(GestorTurnos gestorTurnos){
         JPanel panel = new JPanel();
         JPanel admTitlePanel = new JPanel();
         admTitlePanel.setBackground(new Color(255, 198, 135)); // color NARANJA (RGB)
@@ -166,7 +166,7 @@ public class Main {
         return panel;
     }
 
-    public static JPanel doctorPanel(){
+    public static JPanel doctorPanel(GestorTurnos gestorTurnos){
         JPanel panel = new JPanel();
 
         JPanel doctorTitlePanel = new JPanel();

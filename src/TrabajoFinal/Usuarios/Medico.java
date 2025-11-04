@@ -6,10 +6,10 @@ import java.io.Serializable;
 public class Medico extends Usuario implements Serializable {
 
     private String especialidad;
-    private String matricula;
+    private int matricula;
 
     // contructor
-    public Medico(String nombre, String apellido, int dni, String usario, String especialidad, String matricula) {
+    public Medico(String nombre, String apellido, int dni, String usario, String especialidad, int matricula) {
         super(nombre, apellido, dni, usario);
         this.especialidad = especialidad;
         this.matricula = matricula;
@@ -23,11 +23,11 @@ public class Medico extends Usuario implements Serializable {
         this.especialidad = especialidad;
     }
 
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 

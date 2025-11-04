@@ -95,19 +95,19 @@ public class GestorTurnos implements Serializable {
     }
 
     public void mostrarPacientes(){
-        if (pacientes.size() == 0){
+        if (pacientes.isEmpty()){
             JOptionPane.showMessageDialog(null ,"NO HAY PACIENTES");
         }else{
             StringBuilder message = new StringBuilder();
             for (Paciente paciente : pacientes){
-                message.append(paciente.toString()+"\n");
+                message.append(paciente.toString()).append("\n");
             }
             JOptionPane.showMessageDialog(null ,message);
         }
     }
 
     public void eliminarPaciente(){
-        if (pacientes.size() == 0){
+        if (pacientes.isEmpty()){
             JOptionPane.showMessageDialog(null,"NO HAY PACIENTES!");
         }else{
             String usuarioPaciente = JOptionPane.showInputDialog("Ingrese el usuario del paciente que desea eliminar: ");
@@ -132,27 +132,153 @@ public class GestorTurnos implements Serializable {
     }
 
     public void crearMedico(){
-
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del medico: ");
+        if (nombre == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String apellido = JOptionPane.showInputDialog("Ingrese el apellido del medico: ");
+        if (apellido == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        Integer dni = Helper.getIntegerJInput("Ingrese el dni: ");
+        if (dni == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String usuario = JOptionPane.showInputDialog("Ingrese el usuario del medico: ");
+        if (usuario == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String especialidad = JOptionPane.showInputDialog("Ingrese la especialidad del medico: ");
+        if (especialidad == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        Integer matricula = Helper.getIntegerJInput("Ingrese el numero de matricula: ");
+        if (matricula == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        medicos.add(new Medico(nombre, apellido, dni, usuario, especialidad, matricula));
+        FileManager.saveData(this, this.archivo.getName());
     }
 
     public void mostrarMedicos(){
-
+        if (medicos.isEmpty()){
+            JOptionPane.showMessageDialog(null ,"NO HAY MEDICOS");
+        }else{
+            StringBuilder message = new StringBuilder();
+            for (Medico medico : medicos){
+                message.append(medico.toString()).append("\n");
+            }
+            JOptionPane.showMessageDialog(null ,message);
+        }
     }
 
     public void eliminarMedico(){
-
+        if (medicos.isEmpty()){
+            JOptionPane.showMessageDialog(null,"NO HAY MEDICOS!");
+        }else{
+            String usuarioMedico = JOptionPane.showInputDialog("Ingrese el usuario del paciente que desea eliminar: ");
+            Medico  medicoEliminar = null;
+            for (Medico medico : medicos){
+                if (medico.getUsuario().equals(usuarioMedico)){
+                    medicoEliminar = medico;
+                }
+            }
+            if (medicoEliminar == null){
+                JOptionPane.showMessageDialog(null, "MEDICO NO ENCONTRADO!");
+            }else{
+                if (JOptionPane.showConfirmDialog(null, medicoEliminar.toString()+". ELIMINAR?") == 0){
+                    medicos.remove(medicoEliminar);
+                    JOptionPane.showMessageDialog(null,"Medico eliminado!");
+                    FileManager.saveData(this, archivo.getName());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Operacion cancelada.");
+                }
+            }
+        }
     }
 
     public void crearAdministrativo(){
-
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del administrativo: ");
+        if (nombre == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String apellido = JOptionPane.showInputDialog("Ingrese el apellido del administrativo: ");
+        if (apellido == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        Integer dni = Helper.getIntegerJInput("Ingrese el dni: ");
+        if (dni == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String usuario = JOptionPane.showInputDialog("Ingrese el usuario del administrativo: ");
+        if (usuario == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        String sector = JOptionPane.showInputDialog("Ingrese la especialidad del administrativo: ");
+        if (sector == null) {
+            // El usuario presionó "Cancelar"
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            return; // Termina la función aquí
+        }
+        administrativos.add(new Administrativo(nombre, apellido, dni, usuario, sector));
+        FileManager.saveData(this, this.archivo.getName());
     }
 
     public void mostrarAdministrativos(){
-
+        if (administrativos.isEmpty()){
+            JOptionPane.showMessageDialog(null ,"NO HAY ADMINISTRATIVOS");
+        }else{
+            StringBuilder message = new StringBuilder();
+            for (Administrativo administrativo : administrativos){
+                message.append(administrativo.toString()).append("\n");
+            }
+            JOptionPane.showMessageDialog(null ,message);
+        }
     }
 
     public void eliminarAdministrativo(){
-
+        if (administrativos.isEmpty()){
+            JOptionPane.showMessageDialog(null,"NO HAY ADMINISTRATIVOS!");
+        }else{
+            String usuarioAdm = JOptionPane.showInputDialog("Ingrese el usuario del administrativo que desea eliminar: ");
+            Administrativo administrativoEliminar = null;
+            for (Administrativo administrativo : administrativos){
+                if (administrativo.getUsuario().equals(usuarioAdm)){
+                    administrativoEliminar = administrativo;
+                }
+            }
+            if (administrativoEliminar == null){
+                JOptionPane.showMessageDialog(null, "ADMINISTRATIVO NO ENCONTRADO!");
+            }else{
+                if (JOptionPane.showConfirmDialog(null, administrativoEliminar.toString()+". ELIMINAR?") == 0){
+                    administrativos.remove(administrativoEliminar);
+                    JOptionPane.showMessageDialog(null,"administrativo eliminado!");
+                    FileManager.saveData(this, archivo.getName());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Operacion cancelada.");
+                }
+            }
+        }
     }
 
     //region GET AND SET
