@@ -34,10 +34,7 @@ public class Medico extends Usuario implements Serializable {
     //toString
     @Override
     public String toString() {
-        return "Medico [especialidad=" + especialidad + ", matricula=" + matricula + ", getEspecialidad()="
-                + getEspecialidad() + ", getMatricula()=" + getMatricula() + ", getNombre()=" + getNombre()
-                + ", getApellido()=" + getApellido() + ", getDni()=" + getDni() + ", toString()=" + super.toString()
-                + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+        return "[Nombre:"+getNombre()+", Apellido: "+getApellido()+", DNI: "+ getDni()+", usuario: " +getUsuario()+", Especialidad: "+getEspecialidad()+", Matricula: "+getMatricula()+ "]";
     }
 
 

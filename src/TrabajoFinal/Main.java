@@ -3,9 +3,9 @@ package TrabajoFinal;
 import javax.swing.*;
 import java.awt.*;
 
-//TODO ToString de medicos y adm
-
 public class Main {
+
+    //TODO ToString de ver turnos
 
     // Obtener el tamaño de la pantalla
     static Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
@@ -18,6 +18,9 @@ public class Main {
     static void main(String[] args) {
         GestorTurnos gestorTurnos = new GestorTurnos();
         gestorTurnos.debugData();
+
+        if (!pedirUsuario(gestorTurnos)) return;
+
         mainUI(gestorTurnos);
     }
 
@@ -156,6 +159,7 @@ public class Main {
         crearTurnoBtn.setPreferredSize(d);
         crearTurnoBtn.setMinimumSize(d);
         crearTurnoBtn.setMaximumSize(d);
+        crearTurnoBtn.addActionListener(event -> gestorTurnos.crearTurno());
         patientButtons.add(crearTurnoBtn);
         patientButtons.add(Box.createVerticalStrut(10));
 
@@ -164,6 +168,14 @@ public class Main {
         borrarTurnoBtn.setMinimumSize(d);
         borrarTurnoBtn.setMaximumSize(d);
         patientButtons.add(borrarTurnoBtn);
+        patientButtons.add(Box.createVerticalStrut(10));
+
+        JButton verTurnosBtn = new JButton("VER TURNOS");
+        verTurnosBtn.setPreferredSize(d);
+        verTurnosBtn.setMinimumSize(d);
+        verTurnosBtn.setMaximumSize(d);
+        verTurnosBtn.addActionListener(event -> gestorTurnos.mostrarTurnos());
+        patientButtons.add(verTurnosBtn);
         patientButtons.add(Box.createVerticalStrut(10));
 
         panel.add(patientButtons);
@@ -236,4 +248,18 @@ public class Main {
         return titlePanel;
     }
 
+    public static boolean pedirUsuario(GestorTurnos gestorTurnos) {
+        boolean isValid = false;
+        while (!isValid){
+            String user = JOptionPane.showInputDialog(
+                    null,
+                    "Ingrese usuario ADMINISTRATIVO:",
+                    "Inicio de sesión",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+            if(user == null) return false;
+            isValid = gestorTurnos.validateAdmUser(user);
+        }
+        return isValid;
+    }
 }

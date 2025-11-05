@@ -24,9 +24,7 @@ public class Administrativo extends Usuario  implements Serializable {
     //to String
     @Override
     public String toString() {
-        return "Administrativo [sector=" + sector + ", getSector()=" + getSector() + ", getNombre()=" + getNombre()
-                + ", getApellido()=" + getApellido() + ", getDni()=" + getDni() + ", toString()=" + super.toString()
-                + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+        return "[Nombre:"+getNombre()+", Apellido: "+getApellido()+", DNI: "+ getDni()+", usuario: " +getUsuario()+", Sector: "+getSector()+ "]";
     }
 
 

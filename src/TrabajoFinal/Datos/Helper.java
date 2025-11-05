@@ -1,6 +1,8 @@
 package TrabajoFinal.Datos;
 
 import javax.swing.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Helper {
@@ -50,5 +52,53 @@ public class Helper {
         return stringValue;
     }
     //endregion
+
+    public static LocalDate getLocalDate(){
+        int day;
+        int month;
+        int year;
+        LocalDate fecha;
+
+        while (true){
+            String dateString = JOptionPane.showInputDialog("Ingrese la fecha (DD/MM/AAA)");
+            String[] splitDate = dateString.split("/");
+            try {
+                day = Integer.parseInt(splitDate[0]);
+                month = Integer.parseInt(splitDate[1]);
+                year = Integer.parseInt(splitDate[2]);
+            } catch (NumberFormatException e) {
+                continue;
+            }
+            boolean dayC = day <= 31 && day > 0;
+            boolean monthC = month <= 12 && month > 0;
+            boolean yearC = year < 2100 && year > 1950;
+            fecha = LocalDate.of(year,month,day);
+            if(dayC && monthC && yearC && fecha.isAfter(LocalDate.now())){
+                break;
+            }
+        }
+        return fecha;
+    }
+
+    public static LocalTime getLocalTime(){
+        int hour;
+        int minute;
+        while (true) {
+            try {
+                hour = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la hora (0 a 23): "));
+                minute = Integer.parseInt(JOptionPane.showInputDialog("Ingrese los minutos (0 a 59): "));
+            } catch (Exception e) {
+                continue;
+            }
+            if (!((hour <= 23 && hour >= 0) && (minute <= 59 && minute >= 0))){
+                System.out.println("Ingrese un horario valido");
+
+            }else{
+                break;
+            }
+        }
+
+        return LocalTime.of(hour,minute);
+    }
 
 }
