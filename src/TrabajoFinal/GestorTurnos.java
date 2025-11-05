@@ -362,9 +362,25 @@ public class GestorTurnos implements Serializable {
     public void crearTurno(){
         Turno turno;
         Paciente paciente = buscarPaciente();
+        if (paciente == null){
+            JOptionPane.showMessageDialog(null,"Operación cancelada.");
+            return;
+        }
         Medico medico = buscarMedico();
+        if (medico == null){
+            JOptionPane.showMessageDialog(null,"Operación cancelada.");
+            return;
+        }
         LocalDate fecha = Helper.getLocalDate();
+        if (fecha == null){
+            JOptionPane.showMessageDialog(null,"Operación cancelada.");
+            return;
+        }
         LocalTime hora = Helper.getLocalTime();
+        if (hora == null){
+            JOptionPane.showMessageDialog(null,"Operación cancelada.");
+            return;
+        }
         turnos.add(new Turno(fecha, hora, paciente, medico, true));
         FileManager.saveData(this, archivo.getName());
     }
@@ -386,6 +402,9 @@ public class GestorTurnos implements Serializable {
     public Paciente buscarPaciente(){
         Paciente paciente = null;
         String usuario = JOptionPane.showInputDialog("Ingrese el usuario del paciente: ");
+        if (usuario == null){
+            return null;
+        }
         for (Paciente pac : pacientes){
             if (pac.getUsuario().equals(usuario)){
                 paciente = pac;
@@ -394,8 +413,6 @@ public class GestorTurnos implements Serializable {
         while (paciente == null){
             usuario = JOptionPane.showInputDialog("No encontrado, ingrese un usuario valido: ");
             if (usuario == null) {
-                // El usuario presionó "Cancelar"
-                JOptionPane.showMessageDialog(null, "Operación cancelada.");
                 return null;
             }
             for (Paciente pac : pacientes){
@@ -410,16 +427,18 @@ public class GestorTurnos implements Serializable {
     public Medico buscarMedico(){
         Medico medico = null;
         String usuario = JOptionPane.showInputDialog("Ingrese el usuario del medico: ");
+        if (usuario == null){
+            return null;
+        }
         for (Medico med : medicos){
             if (med.getUsuario().equals(usuario)){
                 medico = med;
             }
         }
+
         while (medico == null){
             usuario = JOptionPane.showInputDialog("No encontrado, ingrese un usuario valido: ");
             if (usuario == null) {
-                // El usuario presionó "Cancelar"
-                JOptionPane.showMessageDialog(null, "Operación cancelada.");
                 return null;
             }
             for (Medico med : medicos){

@@ -61,12 +61,15 @@ public class Helper {
 
         while (true){
             String dateString = JOptionPane.showInputDialog("Ingrese la fecha (DD/MM/AAA)");
+            if (dateString == null){
+                return null;
+            }
             String[] splitDate = dateString.split("/");
             try {
                 day = Integer.parseInt(splitDate[0]);
                 month = Integer.parseInt(splitDate[1]);
                 year = Integer.parseInt(splitDate[2]);
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 continue;
             }
             boolean dayC = day <= 31 && day > 0;
@@ -81,12 +84,17 @@ public class Helper {
     }
 
     public static LocalTime getLocalTime(){
+        String timeString = JOptionPane.showInputDialog("Ingrese la hora (HH:MM) :");
+        if (timeString == null){
+            return null;
+        }
+        String[] splitHour = timeString.split(":");
         int hour;
         int minute;
         while (true) {
             try {
-                hour = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la hora (0 a 23): "));
-                minute = Integer.parseInt(JOptionPane.showInputDialog("Ingrese los minutos (0 a 59): "));
+                hour = Integer.parseInt(splitHour[0]);
+                minute = Integer.parseInt(splitHour[1]);
             } catch (Exception e) {
                 continue;
             }
@@ -97,8 +105,9 @@ public class Helper {
                 break;
             }
         }
-
-        return LocalTime.of(hour,minute);
+        LocalTime time = LocalTime.of(hour,minute);
+        System.out.println("retorna"); //DEBUG
+        return time;
     }
 
 }
