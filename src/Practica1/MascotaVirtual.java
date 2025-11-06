@@ -1,4 +1,4 @@
-package Practica1_Rogelio;
+package Practica1;
 
 public class MascotaVirtual {
 
