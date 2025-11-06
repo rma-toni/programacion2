@@ -2,10 +2,11 @@ package TrabajoFinal;
 import TrabajoFinal.Usuarios.Medico;
 import TrabajoFinal.Usuarios.Paciente;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Turno {
+public class Turno implements Serializable {
 
     private LocalDate fecha;
     private LocalTime hora;
@@ -69,8 +70,7 @@ public class Turno {
     //TO String
     @Override
     public String toString() {
-        return "Turnos [fecha=" + fecha + ", hora=" + hora + ", paciente=" + paciente + ", medico=" + medico
-                + ", estado=" + estado + ", getFecha()=" + getFecha() + ", getHora()=" + getHora() + ", getPaciente()="
-                + getPaciente() + ", getMedico()=" + getMedico() + ", getEstado()=" + getEstado() + "]";
+        return "Turnos [fecha=" + fecha + ", hora=" + hora + ", paciente=" + paciente.getNombre() + ", medico=" + medico.getNombre()
+                + ", especialidad=" + medico.getEspecialidad() + ", estado=" + estado + "]";
     }
 }

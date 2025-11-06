@@ -167,6 +167,7 @@ public class Main {
         borrarTurnoBtn.setPreferredSize(d);
         borrarTurnoBtn.setMinimumSize(d);
         borrarTurnoBtn.setMaximumSize(d);
+        borrarTurnoBtn.addActionListener(event -> gestorTurnos.cancelarTurno());
         patientButtons.add(borrarTurnoBtn);
         patientButtons.add(Box.createVerticalStrut(10));
 

@@ -51,16 +51,6 @@ public class GestorTurnos implements Serializable {
 
     };
 
-    public void deleteData(){
-        if (archivo.delete()){
-            System.out.println("Los datos fueron eliminados correctamente.");
-        }else {
-            System.out.println("No se pudo elimnar los datos.");
-        }
-
-
-    }
-
     public void crearPaciente(){
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del paciente: ");
         if (nombre == null) {
@@ -318,6 +308,19 @@ public class GestorTurnos implements Serializable {
                 administrativos.add(new Administrativo("Javier", "Ortiz", 28976543, "jortiz", "Compras"));
                 administrativos.add(new Administrativo("Sabrina", "Flores", 32234567, "sflores", "Mesa de Entradas"));
 
+                turnos.add(new Turno(LocalDate.now(), LocalTime.now(),
+                        pacientes.get(5),
+                        medicos.get(4),
+                        true));
+                turnos.add(new Turno(LocalDate.now(), LocalTime.now(),
+                        pacientes.get(5),
+                        medicos.get(2),
+                        true));
+                turnos.add(new Turno(LocalDate.now(), LocalTime.now(),
+                        pacientes.get(5),
+                        medicos.get(8),
+                        true));
+
                 FileManager.saveData(this, archivo.getName());
             }
     }
@@ -395,6 +398,26 @@ public class GestorTurnos implements Serializable {
             }
             JOptionPane.showMessageDialog(null ,message);
         }
+    }
+
+    public void cancelarTurno(){
+        StringBuilder message = new StringBuilder();
+        Paciente pac = buscarPaciente();
+        int count = 1;
+        ArrayList<Turno> turnosEncontrados = new ArrayList<>();
+        if (!(pac == null)){
+            for (Turno turno : turnos){
+                if (turno.getPaciente().getUsuario().equals(pac.getUsuario())){
+                    message.append(count).append(")").append(turno.toString()).append("\n");
+                    turnosEncontrados.add(turno);
+                    count++;
+                }
+            }
+            int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el turno a eliminar (numero): \n"+message));
+            Turno turnoEliminar = turnosEncontrados.get(opcion-1);
+            turnos.remove(turnoEliminar);
+        }
+        FileManager.saveData(this,archivo.getName());
     }
     //endregion
 
