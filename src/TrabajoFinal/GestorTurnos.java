@@ -1,6 +1,7 @@
 package TrabajoFinal;
 
 //todo Mensaje de confirmacion al borrar turno
+//todo JOptionPane al iniciar sesion de cero
 
 import TrabajoFinal.Datos.Helper;
 import TrabajoFinal.Datos.FileManager;
@@ -41,7 +42,7 @@ public class GestorTurnos implements Serializable {
             this.administrativos = carga.getAdministrativos();
             this.turnos = carga.getTurnos();
         }else{
-            this.nombre = Helper.getString("Ingrese el nombre del establecimiento: ");
+            this.nombre = JOptionPane.showInputDialog("Ingrese el nombre del establecimiento: ");
             this.pacientes = new ArrayList<>();
             this.medicos = new ArrayList<>();
             this.administrativos = new ArrayList<>();
