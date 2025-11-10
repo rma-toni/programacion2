@@ -5,8 +5,6 @@ import java.awt.*;
 
 public class Main {
 
-    //TODO ToString de ver turnos
-
     // Obtener el tamaño de la pantalla
     static Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     static int widthScreen = pantalla.width;

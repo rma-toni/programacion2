@@ -1,6 +1,6 @@
 package TrabajoFinal;
 
-//todo salto de linea en mostrar pacientes
+//todo Mensaje de confirmacion al borrar turno
 
 import TrabajoFinal.Datos.Helper;
 import TrabajoFinal.Datos.FileManager;
@@ -226,7 +226,7 @@ public class GestorTurnos implements Serializable {
             JOptionPane.showMessageDialog(null, "Operación cancelada.");
             return; // Termina la función aquí
         }
-        String sector = JOptionPane.showInputDialog("Ingrese la especialidad del administrativo: ");
+        String sector = JOptionPane.showInputDialog("Ingrese el area del administrativo: ");
         if (sector == null) {
             // El usuario presionó "Cancelar"
             JOptionPane.showMessageDialog(null, "Operación cancelada.");
@@ -413,9 +413,18 @@ public class GestorTurnos implements Serializable {
                     count++;
                 }
             }
-            int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el turno a eliminar (numero): \n"+message));
-            Turno turnoEliminar = turnosEncontrados.get(opcion-1);
-            turnos.remove(turnoEliminar);
+            String numString = JOptionPane.showInputDialog("Ingrese el turno a eliminar (numero): \n"+message);
+            if (numString!=null && !numString.isEmpty()){
+                int opcion = Integer.parseInt(numString);
+                if (opcion < turnosEncontrados.size() && opcion > 0){
+                    Turno turnoEliminar = turnosEncontrados.get(opcion-1);
+                    turnos.remove(turnoEliminar);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Valor invalido");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "No se ingreso ningún valor");
+            }
         }
         FileManager.saveData(this,archivo.getName());
     }
