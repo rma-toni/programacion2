@@ -1,7 +1,8 @@
 package TrabajoFinal;
 
-//todo Mensaje de confirmacion al borrar turno
-//todo JOptionPane al iniciar sesion de cero
+//todo Boton Modificar Turnos, Pacientes, Adm, Medicos
+//todo Generar informes
+//todo Mostrar disponibilidad
 
 import TrabajoFinal.Datos.Helper;
 import TrabajoFinal.Datos.FileManager;

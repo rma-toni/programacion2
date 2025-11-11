@@ -70,6 +70,7 @@ public class Main {
 
         panel.add(admTitlePanel);
 
+        //TODO AdminButtons
         JPanel doctorButtons = new JPanel();
         doctorButtons.setLayout(new BoxLayout(doctorButtons, BoxLayout.Y_AXIS)); // apilado vertical
         Dimension d = new Dimension(200, 40);
