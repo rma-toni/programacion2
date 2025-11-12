@@ -34,5 +34,4 @@ bin/
 ### dat ###
 *.dat
 *.pdf
-/libsg
 /src/TrabajoFinal/libs/
