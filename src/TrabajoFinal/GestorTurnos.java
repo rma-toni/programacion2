@@ -1,7 +1,12 @@
 package TrabajoFinal;
 
-//todo Boton Modificar Turnos, Pacientes, Adm, Medicos
 //todo Generar informes pdf
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 
 import TrabajoFinal.Datos.Helper;
@@ -19,7 +24,6 @@ import java.time.LocalTime;
 import java.awt.*; // este tambien importe
 import java.time.format.DateTimeFormatter; //importe esto de nuevo toni
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class GestorTurnos implements Serializable {
@@ -29,6 +33,7 @@ public class GestorTurnos implements Serializable {
     private ArrayList<Medico> medicos;
     private ArrayList<Administrativo> administrativos;
     private ArrayList<Turno> turnos;
+    private ArrayList<Turno> turnosCancelados;
 
     private static final long serialVersionUID = 1L;
 
@@ -47,12 +52,14 @@ public class GestorTurnos implements Serializable {
             this.medicos = carga.getMedicos();
             this.administrativos = carga.getAdministrativos();
             this.turnos = carga.getTurnos();
+            this.turnosCancelados = carga.getTurnosCancelados();
         }else{
             this.nombre = JOptionPane.showInputDialog("Ingrese el nombre del establecimiento: ");
             this.pacientes = new ArrayList<>();
             this.medicos = new ArrayList<>();
             this.administrativos = new ArrayList<>();
             this.turnos = new ArrayList<>();
+            this.turnosCancelados = new ArrayList<>();
             FileManager.saveData(this, fileName);
         }
 
@@ -598,44 +605,20 @@ public class GestorTurnos implements Serializable {
     }
 
     public void crearInforme(){
+        String texto = "Hola, este PDF fue creado con Apache PDFBox sin usar Maven.";
+        String rutaDestino = "pdfbox_output.pdf";
 
-    }
+        Document document = new Document();
 
-    //region GET AND SET
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public ArrayList<Paciente> getPacientes() {
-        return pacientes;
-    }
-
-    public ArrayList<Administrativo> getAdministrativos() {
-        return administrativos;
-    }
-
-    public ArrayList<Medico> getMedicos() {
-        return medicos;
-    }
-
-    public ArrayList<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public boolean validateAdmUser(String user){
-        boolean isValid = false;
-
-        for (Administrativo adm : administrativos){
-            if (adm.getUsuario().equals(user)){
-                isValid = true;
-            }
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(rutaDestino));
+            document.open();
+            document.add(new Paragraph(texto));
+            document.close();
+            System.out.println("✅ PDF creado en: " + rutaDestino);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
         }
-
-        return isValid;
     }
 
     public void crearTurno(){
@@ -692,6 +675,8 @@ public class GestorTurnos implements Serializable {
                 if (opcion <= turnosEncontrados.size() && opcion > 0){
                     Turno turnoEliminar = turnosEncontrados.get(opcion-1);
                     turnoEliminar.getDateTurno().setDisponible(true);
+                    turnoEliminar.setEstado(false);
+                    turnosCancelados.add(turnoEliminar);
                     turnos.remove(turnoEliminar);
                 }else{
                     JOptionPane.showMessageDialog(null, "Valor invalido");
@@ -701,6 +686,47 @@ public class GestorTurnos implements Serializable {
             }
         }
         FileManager.saveData(this,archivo.getName());
+    }
+
+    //region GET AND
+    public ArrayList<Turno> getTurnosCancelados() {
+        return turnosCancelados;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public ArrayList<Administrativo> getAdministrativos() {
+        return administrativos;
+    }
+
+    public ArrayList<Medico> getMedicos() {
+        return medicos;
+    }
+
+    public ArrayList<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public boolean validateAdmUser(String user){
+        boolean isValid = false;
+
+        for (Administrativo adm : administrativos){
+            if (adm.getUsuario().equals(user)){
+                isValid = true;
+            }
+        }
+
+        return isValid;
     }
     //endregion
 
