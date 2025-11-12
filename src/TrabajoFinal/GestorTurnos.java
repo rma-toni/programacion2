@@ -605,15 +605,25 @@ public class GestorTurnos implements Serializable {
     }
 
     public void crearInforme(){
-        String texto = "Hola, este PDF fue creado con Apache PDFBox sin usar Maven.";
-        String rutaDestino = "pdfbox_output.pdf";
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.nombre).append(" TURNOS").append("\n");
+        sb.append("TURNOS ACTUALES: \n");
+        for (Turno turno : turnos){
+            sb.append(turno.toString()).append("\n");
+        }
+        sb.append("TURNOS CANCELADOS: \n");
+        for (Turno turno : turnosCancelados){
+            sb.append(turno.toString()).append("\n");
+        }
+
+        String rutaDestino = "infome.pdf";
 
         Document document = new Document();
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream(rutaDestino));
             document.open();
-            document.add(new Paragraph(texto));
+            document.add(new Paragraph(String.valueOf(sb)));
             document.close();
             System.out.println("✅ PDF creado en: " + rutaDestino);
         } catch (DocumentException | FileNotFoundException e) {
