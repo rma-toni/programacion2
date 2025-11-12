@@ -3,6 +3,8 @@ package TrabajoFinal;
 import javax.swing.*;
 import java.awt.*;
 
+//TODO ToString
+
 public class Main {
 
     // Obtener el tamaño de la pantalla
@@ -103,6 +105,22 @@ public class Main {
         doctorButtons.add(eliminarAdmBtn);
         doctorButtons.add(Box.createVerticalStrut(10));
 
+        JButton modAdmBtn = new JButton("MODIFICAR ADMINISTRATIVO");
+        modAdmBtn.setPreferredSize(d);
+        modAdmBtn.setMinimumSize(d);
+        modAdmBtn.setMaximumSize(d);
+        modAdmBtn.addActionListener(event -> gestorTurnos.modificarAdministrativo());
+        doctorButtons.add(modAdmBtn);
+        doctorButtons.add(Box.createVerticalStrut(10));
+
+        JButton informeBtn = new JButton("CREAR INFORME");
+        informeBtn.setPreferredSize(d);
+        informeBtn.setMinimumSize(d);
+        informeBtn.setMaximumSize(d);
+        informeBtn.addActionListener(event -> gestorTurnos.crearInforme());
+        doctorButtons.add(informeBtn);
+        doctorButtons.add(Box.createVerticalStrut(10));
+
         panel.add(doctorButtons);
 
         return panel;
@@ -154,6 +172,15 @@ public class Main {
         patientButtons.add(eliminarPacienteBtn);
         patientButtons.add(Box.createVerticalStrut(10));
 
+        JButton modPacBtn = new JButton("MODIFICAR PACIENTE");
+        modPacBtn.setPreferredSize(d);
+        modPacBtn.setMinimumSize(d);
+        modPacBtn.setMaximumSize(d);
+        modPacBtn.addActionListener(event -> gestorTurnos.modificarPaciente());
+        patientButtons.add(modPacBtn);
+        patientButtons.add(Box.createVerticalStrut(10));
+
+
         JButton crearTurnoBtn = new JButton("ASIGNAR TURNO");
         crearTurnoBtn.setPreferredSize(d);
         crearTurnoBtn.setMinimumSize(d);
@@ -185,7 +212,6 @@ public class Main {
 
     public static JPanel doctorPanel(GestorTurnos gestorTurnos){
         JPanel panel = new JPanel();
-
         JPanel doctorTitlePanel = new JPanel();
         doctorTitlePanel.setBackground(new Color(255, 198, 135)); // color NARANJA (RGB)
         doctorTitlePanel.setPreferredSize(new Dimension(width, 60)); // altura del panel
@@ -228,6 +254,15 @@ public class Main {
         eliminarMedicoBtn.setMaximumSize(d);
         eliminarMedicoBtn.addActionListener(event -> gestorTurnos.eliminarMedico());
         doctorButtons.add(eliminarMedicoBtn);
+        doctorButtons.add(Box.createVerticalStrut(10));
+
+
+        JButton modMedBtn = new JButton("MODIFICAR MEDICO");
+        modMedBtn.setPreferredSize(d);
+        modMedBtn.setMinimumSize(d);
+        modMedBtn.setMaximumSize(d);
+        modMedBtn.addActionListener(event -> gestorTurnos.modificarMedico());
+        doctorButtons.add(modMedBtn);
         doctorButtons.add(Box.createVerticalStrut(10));
 
         panel.add(doctorButtons);
