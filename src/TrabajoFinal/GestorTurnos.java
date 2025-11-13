@@ -140,9 +140,11 @@ public class GestorTurnos implements Serializable {
     public void modificarPaciente(){
         Paciente modPaciente = buscarPaciente();
 
-        String sb = "1 - nombre\n" +
-                "2 - apellido\n" +
-                "3 - obra social\n";
+        String sb = """
+                1 - nombre
+                2 - apellido
+                3 - obra social
+                """;
 
         Integer opcion = Helper.getIntegerJInput(sb +"Ingrese la opcion que desea modificar: ");
         if (opcion!=null){
@@ -625,7 +627,7 @@ public class GestorTurnos implements Serializable {
             document.open();
             document.add(new Paragraph(String.valueOf(sb)));
             document.close();
-            System.out.println("✅ PDF creado en: " + rutaDestino);
+            JOptionPane.showMessageDialog(null, "Infome creado con exito");
         } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -698,13 +700,9 @@ public class GestorTurnos implements Serializable {
         FileManager.saveData(this,archivo.getName());
     }
 
-    //region GET AND
+    //region GET AND SET
     public ArrayList<Turno> getTurnosCancelados() {
         return turnosCancelados;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getNombre() {
@@ -841,7 +839,7 @@ public class GestorTurnos implements Serializable {
         }
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
-        panel.setBorder(BorderFactory.createTitledBorder(LocalDate.now().format(dtf)));
+        panel.setBorder(BorderFactory.createTitledBorder(LocalDate.now().plusDays(days).format(dtf)));
 
         for (dateTurno hora : today){
             if (hora.isDisponible()){
