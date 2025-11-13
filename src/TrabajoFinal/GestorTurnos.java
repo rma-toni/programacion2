@@ -744,7 +744,7 @@ public class GestorTurnos implements Serializable {
         String usuario;
 
         while (paciente == null){
-            usuario = JOptionPane.showInputDialog("No encontrado, ingrese un usuario valido: ");
+            usuario = JOptionPane.showInputDialog("Ingrese un usuario de paciente valido: ");
             if (usuario == null) {
                 return null;
             }
@@ -762,7 +762,7 @@ public class GestorTurnos implements Serializable {
         String usuario;
 
         while (medico == null){
-            usuario = JOptionPane.showInputDialog("No encontrado, ingrese un usuario valido: ");
+            usuario = JOptionPane.showInputDialog("Ingrese un usuario medico valido: ");
             if (usuario == null) {
                 return null;
             }
@@ -780,7 +780,7 @@ public class GestorTurnos implements Serializable {
         String usuario;
 
         while (administrativo == null){
-            usuario = JOptionPane.showInputDialog("No encontrado, ingrese un usuario valido: ");
+            usuario = JOptionPane.showInputDialog("Ingrese un usuario administrativo valido: ");
             if (usuario == null) {
                 return null;
             }
