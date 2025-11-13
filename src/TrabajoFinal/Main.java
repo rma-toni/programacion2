@@ -5,8 +5,6 @@ import java.awt.*;
 
 public class Main {
 
-    //TODO ToString de ver turnos
-
     // Obtener el tamaño de la pantalla
     static Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     static int widthScreen = pantalla.width;
@@ -123,7 +121,6 @@ public class Main {
         patientTitlePanel.add(titlePatient, BorderLayout.CENTER);
         panel.add(patientTitlePanel);
 
-
         JPanel patientButtons = new JPanel();
         patientButtons.setLayout(new BoxLayout(patientButtons, BoxLayout.Y_AXIS)); // apilado vertical
         Dimension d = new Dimension(200, 40);
@@ -145,7 +142,6 @@ public class Main {
         crearPacienteBtn.addActionListener(event -> gestorTurnos.crearPaciente());//TODO
         patientButtons.add(crearPacienteBtn);
         patientButtons.add(Box.createVerticalStrut(10));
-
 
         JButton eliminarPacienteBtn = new JButton("BORRAR PACIENTE");
         eliminarPacienteBtn.setPreferredSize(d);
