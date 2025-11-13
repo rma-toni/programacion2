@@ -1,6 +1,7 @@
 package TrabajoFinal;
 import TrabajoFinal.Usuarios.Medico;
 import TrabajoFinal.Usuarios.Paciente;
+import TrabajoFinal.Usuarios.dateTurno;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -8,17 +9,19 @@ import java.time.LocalTime;
 
 public class Turno implements Serializable {
 
-    private LocalDate fecha;
-    private LocalTime hora;
+    private dateTurno horaFecha;
+    private LocalDate fecha; //TODO ELIMINAR
+    private LocalTime hora; //TODO ELIMINAR
     private Paciente paciente;
     private Medico medico;
     private boolean estado;
 
     //Contructor
-    public Turno(LocalDate fecha, LocalTime hora, Paciente paciente, Medico medico, boolean estado) {
+    public Turno(dateTurno date, Paciente paciente, Medico medico, boolean estado) {
 
-        this.fecha = fecha;
-        this.hora = hora;
+        this.horaFecha = date;
+        this.fecha = date.getFecha();
+        this.hora = date.getHora();
         this.paciente = paciente;
         this.medico = medico;
         this.estado = estado;
@@ -66,6 +69,9 @@ public class Turno implements Serializable {
         this.estado = estado;
     }
 
+    public dateTurno getDateTurno() {
+        return horaFecha;
+    }
 
     //TO String
     @Override

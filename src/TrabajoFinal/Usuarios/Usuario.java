@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
         this.usuario = usuario;
     }
 
-    //getters y Setters
+    //region getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -46,6 +46,7 @@ public class Usuario implements Serializable {
     public void setDni(int dni) {
         this.dni = dni;
     }
+    //endregion
 
     @Override
     public String toString() {

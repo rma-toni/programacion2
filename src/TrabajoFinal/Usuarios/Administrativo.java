@@ -20,7 +20,6 @@ public class Administrativo extends Usuario  implements Serializable {
         this.sector = sector;
     }
 
-
     //to String
     @Override
     public String toString() {

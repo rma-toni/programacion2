@@ -31,7 +31,6 @@ public class Helper {
         Integer integerValue = 0;
         while (true) {
             try {
-                System.out.print(inputMessage);
                 String intString = JOptionPane.showInputDialog(inputMessage);
                 if (intString == null) {
                     return null; // Termina la función aquí

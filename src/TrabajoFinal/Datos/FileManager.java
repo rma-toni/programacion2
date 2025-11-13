@@ -2,8 +2,6 @@ package TrabajoFinal.Datos;
 
 import java.io.*; //Solo necesitamos ObjectInputStream y FileInputStream
 
-//TODO no mandar mensajes desde la capa de dato
-
 public class FileManager {
 
     public static <T extends Serializable> boolean saveData(T object, String fileName){
